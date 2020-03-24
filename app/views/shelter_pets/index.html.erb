@@ -1,0 +1,15 @@
+<%= link_to 'View All Pets', "/pets" %><br>
+<%= link_to 'View All Shelters', "/shelters" %><br>
+
+<h3><%= link_to "View #{@shelter_pet.name}", "/shelters/#{@shelter_pet.id}" %></h3><br/>
+
+<% @shelter_pet.pets.each do |pet| %>
+  <% if pet.adoption_status == "Adoptable" %>
+    <img src="<%= pet.image %>" alt="Pictured: <%= pet.name %>">
+    <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+    <p>Approximate Age: <%= pet.approximate_age %></p>
+    <p>Sex: <%= pet.sex %></p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Create Pet', "/shelters/#{@shelter_pet.id}/pets/new" %>

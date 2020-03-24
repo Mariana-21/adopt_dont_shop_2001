@@ -1,0 +1,22 @@
+<%= link_to 'View All Pets', "/pets" %><br>
+<%= link_to 'View All Shelters', "/shelters" %><br>
+
+<%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+
+  <%= label_tag :image, "Image URL" %><br>
+  <%= text_field_tag :image, "#{@pet.image}"%><br>
+
+  <%= label_tag :name %><br>
+  <%= text_field_tag :name, "#{@pet.name}"%><br>
+
+  <%= label_tag :description %><br>
+  <%= text_field_tag :description, "#{@pet.description}"%><br>
+
+  <%= label_tag :approximate_age, "Approximate Age" %><br>
+  <%= text_field_tag :approximate_age, "#{@pet.approximate_age}"%><br>
+
+  <%= label_tag :sex %><br>
+  <%= select_tag :sex, options_for_select(["Male", "Female"])%><br>
+
+  <%= submit_tag "Update Pet" %>
+<% end %>

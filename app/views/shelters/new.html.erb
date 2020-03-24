@@ -1,0 +1,21 @@
+<%= link_to 'View All Pets', "/pets" %><br>
+<%= link_to 'View All Shelters', "/shelters" %><br>
+
+<%= form_tag "/shelters", method: :post do %>
+  <%= label_tag :name %><br>
+  <%= text_field_tag :name, nil, placeholder: 'ASPCA'%><br>
+
+  <%= label_tag :address %><br>
+  <%= text_field_tag :address, nil, placeholder: '424 E 92nd St'%><br>
+
+  <%= label_tag :city %><br>
+  <%= text_field_tag :city, nil, placeholder: 'New York City'%><br>
+
+  <%= label_tag :state %><br>
+  <%= text_field_tag :state, nil, placeholder: 'NY'%><br>
+
+  <%= label_tag :zip %><br>
+  <%= text_field_tag :zip, nil, placeholder: '10128'%><br>
+
+  <%= submit_tag "Create Shelter" %>
+<% end %>
