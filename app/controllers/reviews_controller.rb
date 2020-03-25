@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-    def show
-        @review = Review.find(params[:id])
-    end
+  def edit
+    @shelter = Shelter.find(params[:id])
+    @review = Review.find(params[:review_id])
+  end
 end
