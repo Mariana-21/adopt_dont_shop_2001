@@ -6,6 +6,15 @@
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
 
+<% @reviews.each do |review| %>
+  <h3><%= review.title %></h3>
+  <p><strong><%= review.rating %></strong></p>
+  <p><%= review.content %></p>
+  <% if !review.picture.nil? %>
+    <img src="<%= review.picture %>">
+  <% end %>
+<% end %>
+
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
 <br/>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
