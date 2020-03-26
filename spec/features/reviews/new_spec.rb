@@ -46,8 +46,6 @@ RSpec.describe "as a user", type: :feature do
     expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
 
     click_button("Submit Review")
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
-
 
     expect(page).to have_content("Review not submitted. Missing one or more of the following fields: Title, Rating or Additonal Information.")
     expect(page).to have_button("Submit Review")
