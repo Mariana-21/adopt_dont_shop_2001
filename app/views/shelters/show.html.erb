@@ -6,9 +6,10 @@
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
 
+<h2>Reviews</h2>
 <% @shelter.reviews.each do |review| %>
   <% if review.save %>
-    <h3><%= review.title %></h3>
+    <h4><%= review.title %></h4>
     <p>Rating: <%= review.rating %></p>
     <p>More Information:
       <%= review.content %></p>
@@ -16,7 +17,7 @@
     <%= link_to 'Edit review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
   <% end %>
 <% end %>
-
-<%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
-<br/>
+<br/><br/>
+<%= link_to 'Write a Review', "/shelters/#{@shelter.id}/new" %><br/>
+<%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %><br/>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
