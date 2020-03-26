@@ -16,8 +16,8 @@ RSpec.describe "as a user", type: :feature do
 
     expect(page).to have_field("Title")
     expect(page).to have_field("Rating")
-    expect(page).to have_field("Content")
-    expect(page).to have_field("Picture (Optional)")
+    expect(page).to have_field("Additonal Information")
+    expect(page).to have_field("Picture URL (Optional)")
 
     fill_in "Title", with: "Found my best friend!"
     fill_in "Rating", with: "5"
