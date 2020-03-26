@@ -21,8 +21,7 @@ RSpec.describe "shelters index page", type: :feature do
     fill_in 'State', with: 'NM'
     fill_in 'Zip', with: '87571'
     click_button('Create Shelter')
-    #
+
     expect(current_path).to eq('/shelters')
-    # expect(page).to have_content('Stray Hearts Taos Animal Shelter')
   end
 end
