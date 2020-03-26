@@ -32,4 +32,22 @@ RSpec.describe "as a user", type: :feature do
     expect(page).to have_content("The staff was very friendly and allowed me to take my time meeting with any dog I thought was a good fit. They even allowed and encouraged me to bring my other dog to meet one of the pups I was interested in. This flexibility helped me make sure the dog I met with was a good fit. I've found my new best friend!")
     expect(page).to have_css("img[src*='https://www.pedigreedatabase.com/uploads/Reliya/images/13592736_10208042346674904_51006761307976618_n-1.jpg']")
   end
+
+  it "Cannot create review without a title, rating, and/or content" do
+    shelter_1 = Shelter.create(name: "Adams County Animal Shelter",
+                               address: "10705 Fulton St",
+                               city: "Brighton",
+                               state: "CO",
+                               zip: "80601")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    click_link("Write a Review")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
+
+    click_button("Submit Review")
+
+    expect(page).to have_content("Review not submitted. Missing one or more of the following fields: Title, Rating or Additonal Information.")
+    expect(page).to have_button("Submit Review")
+  end
 end
