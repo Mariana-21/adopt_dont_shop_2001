@@ -10,7 +10,7 @@ RSpec.describe "as a user", type: :feature do
 
     visit "/shelters/#{shelter_1.id}"
 
-    click_link("New Review")
+    click_link("Write a Review")
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
 
