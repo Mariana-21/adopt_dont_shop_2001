@@ -28,7 +28,8 @@ RSpec.describe "as a user", type: :feature do
     fill_in "Additonal Information", with: "The staff was very friendly and allowed me to take my time meeting with any dog I thought was a good fit. They even allowed and encouraged me to bring my other dog to meet one of the pups I was interested in. This flexibility helped me make sure the dog I met with was a good fit. I've found my new best friend!"
     fill_in "Picture URL (Optional)", with: "https://www.pedigreedatabase.com/uploads/Reliya/images/13592736_10208042346674904_51006761307976618_n-1.jpg"
     click_button("Update Review")
-
+    shelter_1.reload
+    
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
 
     expect(page).to have_content("Found my best friend!")

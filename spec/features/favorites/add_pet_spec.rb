@@ -17,9 +17,9 @@ describe "When a user add pets to their favorites" do
                             adoption_status: "Adoptable",
                             shelter_id: shelter_1.id)
 
-        visit '/shelters'
+        visit '/pets'
 
-        within("#shelter-#{shelter_1.id}") do 
+        within("#pet-#{pet_1.id}") do 
             click_button "Favorite"
         end
 

@@ -6,18 +6,11 @@ class ReviewsController < ApplicationController
 
     def update 
      review = Review.find(params[:id])
-     shelter = Shelter.find(params[:id])
      review.update(review_params)
-
+        # require'pry'; binding.pry
      review.save
-     redirect_to "/shelters/#{shelter.id}"
+     redirect_to "/shelters/#{review.shelter.id}"
     end
-
-    private
-
-    def reviews_params
-    params.permit(:title, :rating, :content, :picture)
-  end
 
   def new
     @shelter = Shelter.find(params[:id])
