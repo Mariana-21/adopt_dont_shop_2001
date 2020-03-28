@@ -10,16 +10,31 @@ RSpec.describe "as a user", type: :feature do
                              rating: "5",
                              content: "The staff was very friendly and allowe dme to take my time meeting with any dog I thought was a godo fit. They even allowed and encouraged me to bring my other dog to meet one of the pups I was interested in. This flexibility helped me make sure the dog I met with was a good fit. I've found my new best friend!",
                              picture: "https://www.pedigreedatabase.com/uploads/Reliya/images/13592736_10208042346674904_51006761307976618_n-1.jpg")
-    review_2 = shelter_1.reviews.create(title: "All animals seemed very happy",
-                             rating: "5",
-                             content: "All animals seemed very happy and well taken care of. The kennels/cages were clean and each had a comfortable looking bed and a full water dish. Upon arriving I immediately noticed several volunteers and staff walking dogs or playing with them in the play yards.")
+    
+  
     visit "/shelters/#{shelter_1.id}"
-    expect(page).to have_content(review_1.title)
-    expect(page).to have_content(review_1.rating)
-    expect(page).to have_content(review_1.content)
-    expect(page).to have_css("img[src*='#{review_1.picture}']")
-    expect(page).to have_content(review_2.title)
-    expect(page).to have_content(review_2.rating)
-    expect(page).to have_content(review_2.content)
+
+    click_link("Edit Review")
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/#{review_1.id}/edit")
+
+    expect(page).to have_field("Title")
+    expect(page).to have_field("Rating")
+    expect(page).to have_field("Additonal Information")
+    expect(page).to have_field("Picture URL (Optional)")
+
+    fill_in "Title", with: "Found my best friend!"
+    fill_in "Rating", with: "5"
+    fill_in "Additonal Information", with: "The staff was very friendly and allowed me to take my time meeting with any dog I thought was a good fit. They even allowed and encouraged me to bring my other dog to meet one of the pups I was interested in. This flexibility helped me make sure the dog I met with was a good fit. I've found my new best friend!"
+    fill_in "Picture URL (Optional)", with: "https://www.pedigreedatabase.com/uploads/Reliya/images/13592736_10208042346674904_51006761307976618_n-1.jpg"
+    click_button("Update Review")
+    shelter_1.reload
+    
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
+
+    expect(page).to have_content("Found my best friend!")
+    expect(page).to have_content("5")
+    expect(page).to have_content("The staff was very friendly and allowed me to take my time meeting with any dog I thought was a good fit. They even allowed and encouraged me to bring my other dog to meet one of the pups I was interested in. This flexibility helped me make sure the dog I met with was a good fit. I've found my new best friend!")
+    expect(page).to have_css("img[src*='https://www.pedigreedatabase.com/uploads/Reliya/images/13592736_10208042346674904_51006761307976618_n-1.jpg']")
   end
 end

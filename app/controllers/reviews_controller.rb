@@ -1,8 +1,16 @@
 class ReviewsController < ApplicationController
-  def edit
-    @shelter = Shelter.find(params[:id])
-    @review = Review.find(params[:review_id])
-  end
+    def edit
+        @review = Review.find(params[:review_id])
+        @shelter = Shelter.find(params[:id])
+    end
+
+    def update 
+     review = Review.find(params[:id])
+     review.update(review_params)
+        # require'pry'; binding.pry
+     review.save
+     redirect_to "/shelters/#{review.shelter.id}"
+    end
 
   def new
     @shelter = Shelter.find(params[:id])

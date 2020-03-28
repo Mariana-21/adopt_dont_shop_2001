@@ -11,12 +11,12 @@
   <% if review.save %>
     <h4><%= review.title %></h4>
     <p>Rating: <%= review.rating %></p>
-    <p>More Information:
-      <%= review.content %></p>
+    <p>More Information: <%= review.content %></p>
     <img src="<%= review.picture %>">
-    <%= link_to 'Edit review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
+      <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
   <% end %>
 <% end %>
+
 <br/><br/>
 <%= link_to 'Write a Review', "/shelters/#{@shelter.id}/new" %><br/>
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %><br/>
