@@ -17,27 +17,23 @@ describe "As as user" do
                           adoption_status: "Adoptable",
                           shelter_id: shelter_1.id)
 
-    visit '/pets'
+    visit "/pets/#{pet_1.id}"
 
     within("#pet-#{pet_1.id}") do
-      expect(page).to have_button("Favorite")
-
-      click_button "Favorite"
-      pet_1.reload
-
-      expect(page).to_not have_button("Favorite")
-      expect(page).to have_button("Remove #{pet_1.name} From Favorites")
-
-      click_button "Remove #{pet_1.name} From Favorites"
-
-      expect(current_path).to eq("/pets/#{pet_1.id}")
-
-      expect(page).to have_content("#{pet_1.name} has been removed from your favorites.")
-
-      expect(page).to have_button("Favorite")
-      expect(page).to_not have_button("Remove #{pet_1.name} From Favorites")
+      expect(page).to have_link("Favorite")
+      click_link "Add to Favorites"
+      expect(page).to_not have_link("Add to Favorites")
+      expect(page).to have_link("Remove #{pet_1.name} From Favorites")
     end
 
+    within("#pet-#{pet_1.id}") do
+      click_link "Remove #{pet_1.name} From Favorites"
+      expect(page).to have_link("Add to Favorites")
+      expect(page).to_not have_link("Remove #{pet_1.name} From Favorites")
+    end
+
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+    expect(page).to have_content("#{pet_1.name} has been removed from your favorites.")
   end
 end
 
