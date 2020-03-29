@@ -8,4 +8,9 @@ class Favorite
   def total_count
     @pets.length
   end
+
+  def add_pet(id)
+    @pets << id.to_s
+  end
+
 end
