@@ -13,4 +13,7 @@ class Favorite
     @pets << id.to_s
   end
 
+  def remove_pet(id)
+    @pets.delete(id.to_s)
+  end
 end
