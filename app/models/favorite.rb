@@ -16,8 +16,4 @@ class Favorite
   def remove_pet(id)
     @pets.delete(id.to_s)
   end
-
-  def count_of
-    @pets.length
-  end
 end
