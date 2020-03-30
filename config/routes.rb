@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
   get '/shelters/:id/new', to: 'reviews#new'
   get '/shelters/:id/:review_id/edit', to: 'reviews#edit'
+  patch '/shelters/:id/:review_id', to: 'reviews#update'
   post '/shelters/:id', to: 'reviews#create'
-  patch '/reviews/:id', to: 'reviews#update'
 
   patch '/favorites/:pet_id', to: 'favorites#update'
   delete '/favorites/:pet_id', to: 'favorites#destroy'
