@@ -12,6 +12,5 @@
     <br/>
     <%= link_to 'Update Pet', "/pets/#{pet.id}/edit" %><br>
     <%= link_to 'Delete Pet', "/pets/#{pet.id}", method: :delete %>
-    <%= button_to "Add Favorite", "/favorites/#{pet.id}", method: :patch %>
   </section>
 <% end %>
