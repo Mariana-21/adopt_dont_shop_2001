@@ -6,10 +6,13 @@ class ReviewsController < ApplicationController
 
     def update 
      review = Review.find(params[:id])
+        if     review.save
+            redirect_to "/shelters/#{review.shelter.id}"
+        else  
+            flash[:notice] = "Review not updated: Required information missing."
+            render :new  
+        end
      review.update(review_params)
-        # require'pry'; binding.pry
-     review.save
-     redirect_to "/shelters/#{review.shelter.id}"
     end
 
   def new
@@ -19,7 +22,6 @@ class ReviewsController < ApplicationController
   def create
     @shelter = Shelter.find(params[:id])
     review = @shelter.reviews.create(review_params)
-    # require "pry"; binding.pry
     if review.save
       redirect_to "/shelters/#{@shelter.id}"
     elsif !review.save
