@@ -8,11 +8,13 @@
 
 <h2>Reviews</h2>
 <% @shelter.reviews.each do |review| %>
+  <section id = "review-<%= review.id %>">
     <h4><%= review.title %></h4>
     <p>Rating: <%= review.rating %></p>
     <p>More Information: <%= review.content %></p>
     <img src="<%= review.picture %>">
-      <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
+    <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
+  </section>
 <% end %>
 
 <br/><br/>
