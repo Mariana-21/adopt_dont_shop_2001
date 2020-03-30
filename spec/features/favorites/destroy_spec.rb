@@ -26,12 +26,15 @@ describe "As as user" do
       expect(page).to have_link("Remove #{pet_1.name} From Favorites")
     end
 
+    expect(page).to have_content("Favorites: 1")
+
     within("#pet-#{pet_1.id}") do
       click_link "Remove #{pet_1.name} From Favorites"
       expect(page).to have_link("Add to Favorites")
       expect(page).to_not have_link("Remove #{pet_1.name} From Favorites")
     end
 
+    expect(page).to have_content("Favorites: 0")
     expect(current_path).to eq("/pets/#{pet_1.id}")
     expect(page).to have_content("#{pet_1.name} has been removed from your favorites.")
   end
