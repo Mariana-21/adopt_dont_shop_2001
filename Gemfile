@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'pg', '0.18.1'
 end
 
 group :development do

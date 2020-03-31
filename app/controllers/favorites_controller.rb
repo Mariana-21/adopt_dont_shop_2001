@@ -1,4 +1,8 @@
 class FavoritesController < ApplicationController
+  def index
+    @favorites = favorite.pets.map { |pet_id| Pet.find(pet_id.to_i) }
+  end
+  
   def update
       pet = Pet.find(params[:pet_id])
       favorite.add_pet(pet.id)

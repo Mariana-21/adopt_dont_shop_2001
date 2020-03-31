@@ -13,7 +13,9 @@
   <% end %>
 
   <body>
-    <p>Favorites: <%= favorite.total_count %></p>
+    <%# <p>Favorites: <%= favorite.total_count %>
+    <%= link_to "Favorites:", "/favorites" %> <span> <%= favorite.total_count %> </span> <br>
+    <%# <p><a href="/favorites"><%= "Favorites: #{favorite.total_count}" %>
 
     <%= yield %>
   </body>
