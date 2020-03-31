@@ -17,10 +17,6 @@ class FavoritesController < ApplicationController
     session[:favorite] = favorite.pets
 
     flash[:notice] = "#{pet.name} has been removed from your favorites."
-    if current_path == '/favorites'
-      redirect_to '/favorites'
-    elsif current_path == '/favorites/pet.id'
-      redirect_to "/pets/#{pet.id}"
-    end
+    redirect_to "/pets/#{pet.id}"
   end
 end
