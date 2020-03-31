@@ -68,34 +68,35 @@ describe "As as user" do
                        approximate_age: "1 y/o",
                        sex: "Female",
                        adoption_status: "Adoptable",
-                       shelter_id: shelter_2.id)
+                       shelter_id: shelter_1.id)
 
-  visit "/pets/#{pet_1.id}"
-  click_link "Add to Favorites"
+    visit "/pets/#{pet_1.id}"
+    click_link "Add to Favorites"
 
-  visit "/pets/#{pet_2.id}"
-  click_link "Add to Favorites"
+    visit "/pets/#{pet_2.id}"
+    click_link "Add to Favorites"
 
-  visit "/pets/#{pet_3.id}"
-  click_link "Add to Favorites"
+    visit "/pets/#{pet_3.id}"
+    click_link "Add to Favorites"
 
-  expect(page).to have_content("Favorites: 3")
+    expect(page).to have_content("Favorites: 3")
 
-  visit "/favorites"
+    visit "/favorites"
 
-  within("#pet-#{pet_1.id}") do
-    expect(page).to have_link("Remove #{pet_1.name} From Favorites")
+    within("#pet-#{pet_1.id}") do
+      expect(page).to have_link("Remove #{pet_1.name} From Favorites")
+    end
+    within("#pet-#{pet_2.id}") do
+      expect(page).to have_link("Remove #{pet_2.name} From Favorites")
+    end
+    within("#pet-#{pet_3.id}") do
+      expect(page).to have_link("Remove #{pet_3.name} From Favorites")
+      click_link "Remove #{pet_3.name} From Favorites"
+    end
+
+    expect(current_path).to eq("/favorites")
+    expect(page).to have_content("Favorites: 2")
   end
-  within("#pet-#{pet_2.id}") do
-    expect(page).to have_link("Remove #{pet_2.name} From Favorites")
-  end
-  within("#pet-#{pet_3.id}") do
-    expect(page).to have_link("Remove #{pet_3.name} From Favorites")
-    click_link "Remove #{pet_3.name} From Favorites"
-  end
-
-  expect(current_path).to eq("/favorites")
-  expect(page).to have_content("Favorites: 2")
 end
 
 # As a visitor
