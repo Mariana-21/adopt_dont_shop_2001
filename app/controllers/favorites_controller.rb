@@ -1,6 +1,9 @@
 class FavoritesController < ApplicationController
   def index
     @favorites = favorite.pets.map { |pet_id| Pet.find(pet_id.to_i) }
+    if favorite.pets.length == 0
+      flash[:notice] = "Oh no! You haven't favorited any pets. Go find a pet you love!"
+    end
   end
 
   def update
@@ -16,7 +19,6 @@ class FavoritesController < ApplicationController
     favorite.remove_pet(pet.id)
     session[:favorite] = favorite.pets
     redirect_to(request.env["HTTP_REFERER"])
-
     flash[:notice] = "#{pet.name} has been removed from your favorites."
   end
 end
