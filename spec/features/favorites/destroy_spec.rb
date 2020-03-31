@@ -98,4 +98,8 @@ describe "As as user" do
     expect(current_path).to eq("/favorites")
     expect(page).to have_content("Favorites: 2")
   end
+  it "show a message when there are no favorites" do
+    visit "/favorites"
+    expect(page).to have_content("Oh no! You haven't favorited any pets. Go find a pet you love!")
+  end
 end
