@@ -93,11 +93,10 @@ describe "As as user" do
       expect(page).to have_link("Remove #{pet_3.name} From Favorites")
       click_link "Remove #{pet_3.name} From Favorites"
     end
-
-    expect(page).to_not have_content(pet_3.name)
     expect(current_path).to eq("/favorites")
     expect(page).to have_content("Favorites: 2")
   end
+
   it "show a message when there are no favorites" do
     visit "/favorites"
     expect(page).to have_content("Oh no! You haven't favorited any pets. Go find a pet you love!")
