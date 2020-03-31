@@ -141,7 +141,7 @@ And I can see my updated review
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 6, Edit a Shelter Review, cont.
 
@@ -152,7 +152,7 @@ And I'm returned to the edit form to edit that review
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 7, Delete a Shelter Review
 
@@ -168,7 +168,7 @@ And I should no longer see that shelter review
 Users will be able to favorite a pet and keep track of pet's they're interested in
 
 ```
-[ ] done
+[X] done
 
 User Story 8, Favorite Indicator
 
@@ -179,7 +179,7 @@ I can see this favorite indicator from any page in the application
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 9, Favorite Creation
 
@@ -194,7 +194,7 @@ The favorite indicator in the nav bar has incremented by one
 
 
 ```
-[ ] done
+[X] done
 
 User Story 10, Favorite Index Page
 
@@ -208,7 +208,7 @@ Each pet in my favorites shows the following information:
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 11, Favorite Indicator links to Index Page
 
@@ -218,7 +218,7 @@ I am taken to the favorites index page
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 12, Can't Favorite a Pet More Than Once
 
@@ -282,7 +282,7 @@ Users will be able to submit an application for one ore more pets they they've f
 ```
 [ ] done
 
-User Story 16, Applying for a Pet
+User Story 16, Applying for a Pet MC
 
 As a visitor
 When I have added pets to my favorites list
@@ -306,7 +306,7 @@ And I'm taken back to my favorites page where I no longer see the pets for which
 ```
 [ ] done
 
-User Story 17, Incomplete application for a Pet
+User Story 17, Incomplete application for a Pet DB
 
 As a visitor
 When I apply for a pet and fail to fill out any of the following:
@@ -325,7 +325,7 @@ And I see a flash message indicating that I must complete the form in order to s
 ```
 [ ] done
 
-User Story 18, List of Pets that have applications on them
+User Story 18, List of Pets that have applications on them MC
 
 As a visitor
 After one or more applications have been created
@@ -356,7 +356,7 @@ I can see the following:
 ```
 [ ] done
 
-User Story 20, Pet Applications Index Page
+User Story 20, Pet Applications Index Page DB
 
 As a visitor
 When I visit a pets show page
@@ -379,7 +379,7 @@ I see a message saying that there are no applications for this pet yet
 ```
 [ ] done
 
-User Story 22, Approving an Application
+User Story 22, Approving an Application MC
 
 As a visitor
 When I visit an application's show page
@@ -393,7 +393,7 @@ And I see text on the page that says who this pet is on hold for (Ex: "On hold f
 ```
 [ ] done
 
-User Story 23, Users can get approved to adopt more than one pet
+User Story 23, Users can get approved to adopt more than one pet DB
 
 As a visitor
 When an application is made for more than one pet
@@ -402,7 +402,7 @@ I'm able to approve the application for any number of pets
 ```
 
 ```
-User Story 24, Pets can only have one approved application on them at any time
+User Story 24, Pets can only have one approved application on them at any time MC
 
 [ ] done
 
@@ -414,7 +414,7 @@ I can not approve any other applications for that pet but all other applications
 ```
 
 ```
-User Story 25, Approved Applications can be revoked
+User Story 25, Approved Applications can be revoked DB
 
 [ ] done
 
