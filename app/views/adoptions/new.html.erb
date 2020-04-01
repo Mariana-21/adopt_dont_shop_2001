@@ -1,0 +1,35 @@
+<%# <%= link_to 'View All Pets', "/pets" %>
+<%# <%= link_to 'View All Shelters', "/shelters" %>
+
+<%= form_tag "/adoptions", method: :post do %>
+
+  <%= label_tag :name %><span>:</span><br>
+  <%= text_field_tag :name%><br>
+
+  <%= label_tag :address %><span>:</span><br>
+  <%= text_field_tag :address%><br>
+
+  <%= label_tag :city %><span>:</span><br>
+  <%= text_field_tag :city%><br>
+
+  <%= label_tag :state %><span>:</span><br>
+  <%= text_field_tag :state%><br>
+
+  <%= label_tag :zip %><span>:</span><br>
+  <%= text_field_tag :zip%><br>
+
+  <%= label_tag :phone %><span>:</span><br>
+  <%= text_field_tag :phone%><br>
+
+  <%= label_tag :description %><span>:</span><br>
+  <%= text_field_tag :description%><br>
+
+  <% @favorites.each do |pet| %>
+    <section id="pet-<%=pet.id%>">
+        <%= label_tag :"#{pet.name}"%><span>:</span><br>
+        <%= check_box_tag "adoptable_pet[]", pet.id %><br>
+    </section>
+<%end%>
+
+  <%= submit_tag "Submit Application" %>
+<% end %>
