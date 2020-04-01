@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
         redirect_to "/shelters/#{review.shelter.id}"
       elsif !review.save
         flash[:notice] = "Review not updated: Required information missing."
-        redirect_to "/shelters/#{review.shelter.id}/#{review.id}/edit"
+        redirect_to "/shelters/#{review.shelter.id}/reviews/#{review.id}/edit"
       end
     end
 
