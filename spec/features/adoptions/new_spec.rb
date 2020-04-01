@@ -44,7 +44,7 @@ describe "As a visitor", type: :feature do
         expect(page).to have_content("Favorites: 3")
         
         visit "/favorites"
-        click_link "Start Adoption"
+        click_link ("Start Adoption")
 
         expect(current_path).to eq('/adoptions/new')
 
@@ -54,10 +54,7 @@ describe "As a visitor", type: :feature do
         expect(page).to have_field('State')
         expect(page).to have_field('Zip')
         expect(page).to have_field('Phone')
-        expect(page).to have_field('Description')
-        expect(page).to have_unchecked_field("#{pet_1.name}")
-        expect(page).to have_unchecked_field("#{pet_2.name}")
-        expect(page).to have_unchecked_field("#{pet_3.name}")
+        expect(page).to have_field('Description')       
 
         fill_in 'Name', with: 'Mike Dao'
         fill_in 'Address', with: '1331 17th St LL100'
@@ -66,35 +63,21 @@ describe "As a visitor", type: :feature do
         fill_in 'Zip', with: '80202'
         fill_in 'Phone', with: '(303) 731-3117'
         fill_in 'Description', with: "I'm a dog person with alot of love to give, seeking companionship"
-        page.check("#{pet_2.name}")
-        page.check("#{pet_3.name}")
-        expect(page).to have_unchecked_field("#{pet_1.name}")
-        expect(page).to have_checked_field("#{pet_2.name}")
-        expect(page).to have_checked_field("#{pet_3.name}")
+       
+        within "#pet-#{pet_1.id}" do
+            check("adoptable_pet_")
+        end
+
+        within "#pet-#{pet_2.id}" do
+            check("adoptable_pet_")
+        end
+
         click_button('Submit Application')
 
-        expect(page).to have_content("Thank you for submitting your application for #{pet_2.name}, #{pet_3.name}")
+        expect(page).to have_content("Thank you for submitting your application!")
         expect(current_path).to eq('/favorites')
+        expect(page).to have_content("Favorites: 1")
+        expect(page).to have_content("#{pet_3.name}")
+        expect(page).to_not have_content("#{pet_1.name}")
     end 
 end
-
-
-
-
-# As a visitor
-# When I have added pets to my favorites list
-# And I visit my favorites page ("/favorites")
-# I see a link for adopting my favorited pets
-# When I click that link I'm taken to a new application form
-# At the top of the form, I can select from the pets of which I've favorited for which I'd like this application to apply towards (can be more than one)
-# When I select one or more pets, and fill in my
-# - Name
-# - Address
-# - City
-# - State
-# - Zip
-# - Phone Number
-# - Description of why I'd make a good home for this/these pet(s)
-# And I click on a button to submit my application
-# I see a flash message indicating my application went through for the pets that were selected
-# And I'm taken back to my favorites page where I no longer see the pets for which I just applied listed as favorites
