@@ -16,7 +16,7 @@ RSpec.describe "as a user", type: :feature do
 
     click_link("Edit Review")
 
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/#{review_1.id}/edit")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
 
     expect(page).to have_field("Title")
     expect(page).to have_field("Rating")
@@ -52,12 +52,13 @@ RSpec.describe "as a user", type: :feature do
     visit "/shelters/#{shelter_1.id}"
 
     click_link("Edit Review")
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/#{review_1.id}/edit")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
     expect(page).to have_button("Update Review")
 
     fill_in "Title", with: nil
     fill_in "Additonal Information", with: nil
     click_button("Update Review")
+    review_1.reload
 
     expect(page).to have_content("Review not updated: Required information missing.")
     expect(page).to have_button('Update Review')
