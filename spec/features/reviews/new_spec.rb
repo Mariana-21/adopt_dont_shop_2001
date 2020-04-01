@@ -12,7 +12,7 @@ RSpec.describe "as a user", type: :feature do
 
     click_link("Write a Review")
 
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
 
     expect(page).to have_field("Title")
     expect(page).to have_field("Rating")
@@ -43,7 +43,7 @@ RSpec.describe "as a user", type: :feature do
     visit "/shelters/#{shelter_1.id}"
 
     click_link("Write a Review")
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/new")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
 
     click_button("Submit Review")
 
