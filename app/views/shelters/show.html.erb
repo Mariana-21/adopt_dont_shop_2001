@@ -14,7 +14,7 @@
     <p>More Information: <%= review.content %></p>
     <img src="<%= review.picture %>">
     <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %>
-    <%= link_to 'Delete Review', "/shelters/#{@shelter.id}/#{review.id}", method: :delete %>
+    <%= link_to 'Delete Review', "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %>
   </section>
 <% end %>
 
