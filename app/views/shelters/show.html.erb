@@ -13,13 +13,13 @@
     <p>Rating: <%= review.rating %></p>
     <p>More Information: <%= review.content %></p>
     <img src="<%= review.picture %>">
-    <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/#{review.id}/edit" %>
-    <%= link_to 'Delete Review', "/shelters/#{@shelter.id}/#{review.id}", method: :delete %>
+    <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %>
+    <%= link_to 'Delete Review', "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %>
   </section>
 <% end %>
 
 <br/><br/>
 
-<%= link_to 'Write a Review', "/shelters/#{@shelter.id}/new" %><br/>
+<%= link_to 'Write a Review', "/shelters/#{@shelter.id}/reviews/new" %><br/>
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %><br/>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>

@@ -7,11 +7,11 @@ class FavoritesController < ApplicationController
   end
 
   def update
-      pet = Pet.find(params[:pet_id])
-      favorite.add_pet(pet.id)
-      session[:favorite] = favorite.pets
-      flash[:notice] = "You now have added #{pet.name} to your favorites!"
-      redirect_to "/pets/#{pet.id}"
+    pet = Pet.find(params[:pet_id])
+    favorite.add_pet(pet.id)
+    session[:favorite] = favorite.pets
+    flash[:notice] = "You now have added #{pet.name} to your favorites!"
+    redirect_to "/pets/#{pet.id}"
   end
 
   def destroy
@@ -23,7 +23,6 @@ class FavoritesController < ApplicationController
       session[:favorite] = favorite.pets
       flash[:notice] = "#{pet.name} has been removed from your favorites."
     end
-
     redirect_to(request.env["HTTP_REFERER"])
   end
 end

@@ -1,6 +1,6 @@
 <h1>Write a Review for <%= @shelter.name %></h1>
 
-<%= form_tag "/shelters/#{@shelter.id}", method: :post do %>
+<%= form_tag "/shelters/#{@shelter.id}/reviews", method: :post do %>
   <%= label_tag :title %><br>
   <%= text_field_tag :title, nil, placeholder: 'Your review at a glance'%><br>
 

@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-describe "As a visitor", type: :feature do 
-    it "can see all my favorites" do 
+describe "As a visitor", type: :feature do
+  it "can see all my favorites" do
     shelter_1 = Shelter.create(name: "Adams County Animal Shelter",
                                 address: "10705 Fulton St",
                                 city: "Brighton",
                                 state: "CO",
-                                zip: "80601")                                
+                                zip: "80601")
     shelter_2 = Shelter.create(name: "Humane Society of Boulder Valley",
                                 address: "2323 55th St",
                                 city: "Boulder",
                                 state: "CO",
-                                zip: "80301")                            
+                                zip: "80301")
 
     pet_1 = Pet.create(image: "https://i.pinimg.com/originals/a6/0f/7f/a60f7f075fcbe60956a31179c5eff08c.jpg",
                         name: "Spyro",
@@ -26,7 +26,7 @@ describe "As a visitor", type: :feature do
                         approximate_age: "4 y/o",
                         sex: "Male",
                         adoption_status: "Adoptable",
-                        shelter_id: shelter_1.id)   
+                        shelter_id: shelter_1.id)
     pet_3 = Pet.create(image: "https://i.pinimg.com/originals/83/c7/1c/83c71cdc4efeeb1b27b524718f646b73.jpg",
                         name: "Cookie",
                         description: "I'm Cookie. I'm a Nova Scotia Duck Tolling Terrier. I'm energetic and playful, a perfect companion for hikes or runs. I love playing fetch and swimming in lakes. I know lots of fun tricks like roll over, high-five and speak. Come say hi! I'm sure we'll be a great match!",
@@ -42,7 +42,7 @@ describe "As a visitor", type: :feature do
     visit "/pets/#{pet_3.id}"
     click_link "Add to Favorites"
     expect(page).to have_content("Favorites: 3")
-    
+
     visit "/favorites"
 
     expect(page).to have_css("img[src*='#{pet_1.image}']")
@@ -62,6 +62,5 @@ describe "As a visitor", type: :feature do
     expect(page).to have_content(pet_3.approximate_age)
     expect(page).to have_content(pet_3.sex)
     expect(page).to have_content(shelter_2.name)
-    end
+  end
 end
-
