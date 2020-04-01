@@ -1,12 +1,15 @@
 <h1> Favorites </h1>
 
 <%  @favorites.each do |pet| %>
+  <section id = "pet-<%=pet.id%>">
     <img src="<%= pet.image %>" alt="Pictured: <%= pet.name %>">
     <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
     <p>Approximate Age: <%= pet.approximate_age %></p>
     <p>Sex: <%= pet.sex %></p>
     <p>Currently at: <a href="/shelters/<%= pet.shelter.id %>"><%= pet.shelter.name %></a></p>
+    <%= link_to "Remove #{pet.name} From Favorites", "/favorites/#{pet.id}", method: :delete %><br/>
     <br/>
+  </section>
 <% end %>
 
 <%= link_to "Start Adoption", "/adoptions/new" %>
