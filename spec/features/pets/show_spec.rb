@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "as a user", type: :feature do
   it "can see one pets info, including image, name, description, approximate age, sex, and adoption_status" do
-
     shelter_1 = Shelter.create(name: "Adams County Animal Shelter",
                                address: "10705 Fulton St",
                                city: "Brighton",
