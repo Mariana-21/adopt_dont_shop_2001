@@ -25,7 +25,10 @@
   <%= text_field_tag :description%><br>
 
   <% @favorites.each do |pet| %>
-    <%= check_box_tag "#{pet.name}", pet.id %>
+    <section id="pet-<%=pet.id%>">
+        <%= label_tag :"#{pet.name}"%><span>:</span><br>
+        <%= check_box_tag "adoptable_pet[]", pet.id %><br>
+    </section>
 <%end%>
 
   <%= submit_tag "Submit Application" %>
