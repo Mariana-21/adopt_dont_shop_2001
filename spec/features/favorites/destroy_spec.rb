@@ -147,6 +147,7 @@ describe "As as user" do
     visit "/favorites"
 
     expect(page).to have_link("Remove All Favorited Pets")
+    click_link "Remove All Favorited Pets"
     expect(current_path).to eq("/favorites")
     expect(page).to have_content("Oh no! You haven't favorited any pets. Go find a pet you love!")
     expect(page).to have_content("Favorites: 0")
